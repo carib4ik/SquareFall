@@ -7,10 +7,18 @@ namespace Game
     {
         [SerializeField] private GameObject _gameScreen;
         [SerializeField] private GameObject _gameOverScreen;
+        [SerializeField] private GameObject _gameStartScreen;
 
         [SerializeField] private float _gameOverScreenShowDelay; //задержка до появления экрана окончания игры
 
         private bool _wasGameOver;
+        
+        private void Awake()
+        {
+            _gameScreen.SetActive(false);
+            _gameOverScreen.SetActive(false);
+            _gameStartScreen.SetActive(true);
+        }
         
         private void Update()
         {
@@ -23,6 +31,12 @@ namespace Game
                     ShowGameOverScreen();
                 }
             }
+        }
+        
+        public void StartGame()
+        {
+            _gameStartScreen.SetActive(false);
+            _gameScreen.SetActive(true);
         }
 
         private void ShowGameOverScreen()
