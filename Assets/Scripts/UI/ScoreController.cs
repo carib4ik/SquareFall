@@ -16,5 +16,10 @@ namespace UI
 
             _currentScoreLabel.text = _currentScore.ToString();
         }
+        
+        public int GetCurrentScore()
+        {
+            return _currentScore;
+        }
     }
 }
