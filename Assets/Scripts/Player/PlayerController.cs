@@ -17,7 +17,7 @@ namespace Player
         {
             _oneWayTime = Vector3.Distance(_leftBorder.position, _rightBorder.position) / _speed;
             
-            //устанавливает текущее время на старте, чтобы позиция круга была в центре
+            //устанавливает текущее время на старте, чтобы позиция игрока была в центре
             _currentTime = Vector3.Distance(_leftBorder.position, transform.position) /  _speed;
         }
         

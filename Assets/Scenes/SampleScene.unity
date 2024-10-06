@@ -1044,6 +1044,8 @@ MonoBehaviour:
   _bestScoreSound: {fileID: 386241941}
   _currentScoreLabel: {fileID: 2031442691}
   _scorePerSquare: 1
+  _scaleDuration: 0.1
+  _scaleFactor: 0.3
 --- !u!4 &386241940
 Transform:
   m_ObjectHideFlags: 0
@@ -1875,6 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b69b6ab51e1443ae152bbcab24152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleChangeDuration: 0.3
 --- !u!61 &992373360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1965,6 +1968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b69b6ab51e1443ae152bbcab24152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleChangeDuration: 0.3
 --- !u!61 &1008375242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2171,6 +2175,7 @@ GameObject:
   - component: {fileID: 1263640306}
   - component: {fileID: 1263640308}
   - component: {fileID: 1263640307}
+  - component: {fileID: 1263640309}
   m_Layer: 0
   m_Name: SquareDestructionBottomTrigger
   m_TagString: Untagged
@@ -2205,6 +2210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b69b6ab51e1443ae152bbcab24152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleChangeDuration: 0.3
 --- !u!61 &1263640308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2250,6 +2256,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &1263640309
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263640305}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9582b982eea7c243b9e5876e9374a36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1275345660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,6 +2900,7 @@ MonoBehaviour:
   _gameScreen: {fileID: 1794963768}
   _gameOverScreen: {fileID: 1088774135}
   _gameStartScreen: {fileID: 427492036}
+  _squareSpawner: {fileID: 340711241}
   _gameOverScreenShowDelay: 1.5
 --- !u!1 &1878354061
 GameObject:
@@ -3276,6 +3304,18 @@ MonoBehaviour:
           m_StringArgument: Died
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1263640309}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 23
+          m_FloatArgument: 0
+          m_StringArgument: GameOver
+          m_BoolArgument: 0
+        m_CallState: 2
   _squareCollected:
     m_PersistentCalls:
       m_Calls:
@@ -3303,6 +3343,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _scaleChangeDuration: 0.3
 --- !u!95 &1950958376
 Animator:
   serializedVersion: 5
@@ -3598,8 +3639,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1161550686}
-  - {fileID: 1827051415}
   - {fileID: 386241940}
+  - {fileID: 1827051415}
+  - {fileID: 427492037}
   - {fileID: 1794963769}
   - {fileID: 1088774137}
-  - {fileID: 427492037}

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 namespace UI
 {
@@ -10,6 +11,8 @@ namespace UI
         [SerializeField] private AudioSource _bestScoreSound;
         [SerializeField] private TextMeshProUGUI _currentScoreLabel; //ссылка на текст
         [SerializeField] private int _scorePerSquare; //количество очков за куб
+        [SerializeField] private float _scaleDuration; //время изменения скейла
+        [SerializeField] private float _scaleFactor; //коэфицент изменения скейла
 
         private int _currentScore; //общее количество очков
         private int _bestScore; //лучший результат очков
@@ -24,6 +27,11 @@ namespace UI
             _currentScore += _scorePerSquare;
 
             _currentScoreLabel.text = _currentScore.ToString();
+            
+            _currentScoreLabel.transform
+                .DOPunchScale(Vector3.one * _scaleFactor, _scaleDuration, 0)
+                .OnComplete(() => _currentScoreLabel.transform.DOScale(Vector3.one, 0));
+            //если подобрать несколько кубиков подряд скейл увеличится от уже увеличенного скейла,  поэтому в конце анимации сделаем скейл равный 1
         }
         
         public int GetCurrentScore()

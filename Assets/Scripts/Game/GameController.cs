@@ -1,3 +1,4 @@
+using Square;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ namespace Game
         [SerializeField] private GameObject _gameScreen;
         [SerializeField] private GameObject _gameOverScreen;
         [SerializeField] private GameObject _gameStartScreen;
+        [SerializeField] private SquareSpawner _squareSpawner;
 
         [SerializeField] private float _gameOverScreenShowDelay; //задержка до появления экрана окончания игры
 
@@ -15,6 +17,8 @@ namespace Game
         
         private void Awake()
         {
+            Application.targetFrameRate = 60; //максимальное значение кадров в секунду
+            
             _gameScreen.SetActive(false);
             _gameOverScreen.SetActive(false);
             _gameStartScreen.SetActive(true);
@@ -54,6 +58,7 @@ namespace Game
         public void OnPlayerDied()
         {
             _wasGameOver = true;
+            _squareSpawner.enabled = false;
         }
     }
 }
