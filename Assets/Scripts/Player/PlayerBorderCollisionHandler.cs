@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBorderCollisionHandler : MonoBehaviour
+namespace Player
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerBorderCollisionHandler : MonoBehaviour
     {
+        [SerializeField] private AudioSource _reboundSound;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.CompareTag(GlobalConstants.PLAYER_TAG))
+            {
+                _reboundSound.Play();
+            }
+        }
     }
 }
